@@ -1,12 +1,23 @@
 # Indian Calculation Practice
 
-インド式計算を練習するPythonアプリです。
+インド式計算（ヴェーダ数学）の掛け算を練習する Python 製CLIアプリです。
 
 ## 機能
 
-- 十の位が同じ掛け算
+- 十の位が同じ数同士の掛け算
+  - 例：13 × 15
 - 1の位の合計が10になる掛け算
+  - 例：23 × 27
 - ×11 の掛け算
+  - 例：11 × 15
+
+## 工夫した点
+
+- `random` モジュールを使用して問題をランダム生成
+- `try-except` による例外処理を実装
+- 全角数字入力にも対応
+- 不正入力時にプログラムが停止しないよう改善
+- 全角「ｂ」入力でもメインメニューへ戻れるよう対応
 
 ## 使用技術
 
@@ -17,5 +28,12 @@
 
 ```bash
 python VedicMathmatics.py
-```# indian-calculation-practice
-Python app for practicing Indian multiplication techniques
+```
+
+## 今後追加したい機能
+
+- 正答率表示
+- インド式計算方法の説明、解説モード
+- 制限時間機能
+- スコア機能
+- GUI化
