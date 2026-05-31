@@ -4,23 +4,31 @@ import random
 def same_tens_times(tens):
     count = 1
     while True:
-        #　片方の数が11,片方が10の位の数の掛け算の問題作成処理
+        #　片方の数が11,片方が十の位の数の掛け算の問題作成処理
         if tens == 11:
             li = [tens, random.randint(10, 19)]
             random.shuffle(li)
             x = li[0]
             y = li[1]
 
-        # 十の位が同じで1の位の合計が10の数の掛け算の問題作成処理
+        # 十の位が同じで一の位の数の合計が10の数の掛け算の問題作成処理
         elif tens == 10:
             tens_value = random.randint(1, 9) * tens
             first_ones_value = random.randint(1, 9)
             second_ones_value = 10 - first_ones_value
             x = tens_value + first_ones_value
             y = tens_value + second_ones_value
+
+        # 一の位が同じで十の位の数の合計が10の数の掛け算の問題作成処理
+        elif tens == 12:
+            ones_value = random.randint(1, 9)
+            first_tens_value = random.randint(1, 9) * 10
+            second_tens_value = 100 - first_tens_value
+            x = first_tens_value + ones_value
+            y = second_tens_value + ones_value
             
         # 十の位が同じ数同士の掛け算の問題作成処理
-        else:               
+        else:            
             x = random.randint(tens * 10, tens * 10 + 9)
             y = random.randint(tens * 10, tens * 10 + 9)
 
@@ -58,12 +66,20 @@ while True:
         print(f"""{another}数値を入力して計算するモードを選択してください。
 １～９・・・１０の位が１～９同士の掛け算　例 １３×１５など
 １０・・・１０の位が同じで１の位の合計が１０の数の掛け算　例 ２３×２７など
+１０.１・・・１の位が同じで１０の位の合計が１０の数の掛け算　例　６４×４４など
 １１・・・片方が１１，片方が１０の位の数の掛け算　例　１１×１５など""")
 
-        tens = int(input()) 
-        if tens in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]:
+        mode_num = input()
+
+        if mode_num == "１０．１" or mode_num == "10.1":
             print()
-            same_tens_times(tens)
+            same_tens_times(12)
+            another = ""
+            continue
+
+        elif int(mode_num) in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]:
+            print()
+            same_tens_times(int(mode_num))
             another = ""
             continue
 
